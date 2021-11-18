@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Global } from "../global";
 import { Observable } from "rxjs";
+import { Apuesta } from "../models/apuesta";
 @Injectable()
 export class ServiceEquipo{
     constructor(private _http:HttpClient){}
@@ -34,5 +35,13 @@ export class ServiceEquipo{
         var request = "/api/apuestas";
         var url = Global.urlapuestas + request;
         return this._http.get(url);
+    }
+    insertApuesta(apuesta:Apuesta):Observable<any>{
+        var json = JSON.stringify(apuesta);
+        var header = new HttpHeaders().set("Content-Type","application/json");
+        var request = "/api/apuestas";
+        var url = Global.urlapuestas + request;
+        return this._http.put(url,json,{headers: header});
+
     }
 }
