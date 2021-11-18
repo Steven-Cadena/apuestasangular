@@ -10,6 +10,7 @@ import { ServiceEquipo } from 'src/app/services/equipo.service';
 })
 export class ApuestasComponent implements OnInit {
   public apuestas!: Array<Apuesta>;
+  public apuestadelete!: Apuesta;
   constructor(
     private _service:ServiceEquipo,
   ) { }
@@ -22,5 +23,13 @@ export class ApuestasComponent implements OnInit {
     this._service.getApuestas().subscribe(response=>{
       this.apuestas = response;
     });
+  }
+
+  eliminarApuesta(){
+    // this._service.eliminarApuesta(idapuesta).subscribe(response=>{
+    // });
+  }
+  recogerApuesta(){
+    this._service
   }
 }

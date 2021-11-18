@@ -1,20 +1,52 @@
-<h1>Local: Real Madrid, Visitante: Atlético de Madrid </h1>
-<a [routerLink]="['/realizarapuesta']" class="btn btn-danger"> 
-    Realizar Apuesta
-</a>
+
 <div *ngIf="apuestas">
+    <h1>Local: Real Madrid, Visitante: Atlético de Madrid </h1>
+    <a [routerLink]="['/realizarapuesta']" class="btn btn-danger"> 
+        Realizar Apuesta
+    </a>
+    
     <table>
         <thead>
             <th>USUARIO</th>
             <th>RESULTADO</th>
             <th>FECHA</th>
+            <th>ELIMNAR</th>
         </thead>
         <tbody>
             <tr *ngFor="let apuesta of apuestas;">
                 <td>{{apuesta.usuario}}</td>
                 <td>{{apuesta.resultado}}</td>
                 <td>{{apuesta.fecha}}</td>
+                <td>
+                    <button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#myModal" (click)="recogerApuesta()">
+                        Eliminar
+                    </button>
+
+                </td>
             </tr>
         </tbody>
     </table>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">ELIMINAR</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">¿Desea Eliminar la Apuesta?</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="eliminarApuesta()">Aceptar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div *ngIf="!apuestas">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden"></span>
+          </div>   
+    </div>
 </div>

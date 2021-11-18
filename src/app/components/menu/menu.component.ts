@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Equipo } from 'src/app/models/equipo';
 import { ServiceEquipo } from 'src/app/services/equipo.service';
 
@@ -9,7 +9,8 @@ import { ServiceEquipo } from 'src/app/services/equipo.service';
 })
 export class MenuComponent implements OnInit {
   public equipos!: Array<Equipo>;
-
+  public valor!:string;
+  @ViewChild("cajabusqueda") cajabusqueda!:ElementRef;
   constructor(
     private _service:ServiceEquipo
   ) { }
@@ -22,5 +23,10 @@ export class MenuComponent implements OnInit {
     this._service.getEquipos().subscribe(response=>{
       this.equipos = response;
     });
+  }
+
+  cambiarValor(){
+    this.valor=this.cajabusqueda.nativeElement.value;
+    console.log(this.valor);
   }
 }

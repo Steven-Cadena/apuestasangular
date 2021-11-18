@@ -21,6 +21,10 @@
             </ul>
           </li>
         </ul>
+        <form class="form-inline my-2 my-lg-0" #form="ngForm">
+          <input (change)="cambiarValor()" name="cajabusqueda" #cajabusqueda class="form-control mr-sm-2" type="search" placeholder="Nombre Jugador" aria-label="Search">
+          <a [routerLink]="['/resultado',valor]" class="btn btn-success">Buscar Jugador</a>
+        </form>
       </div>
     </div>
   </nav>

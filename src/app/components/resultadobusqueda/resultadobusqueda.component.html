@@ -1,0 +1,15 @@
+<h1>Resultado búsqueda</h1>
+<table>
+    <thead>
+        <th>Nombre</th>
+        <th>Imagen</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let jugador of jugadores;">
+            <td>{{jugador.nombre}}</td>
+            <td>
+                <img src="{{jugador.imagen}}"/>
+            </td>
+        </tr>
+    </tbody>
+</table>

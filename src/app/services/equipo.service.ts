@@ -41,7 +41,18 @@ export class ServiceEquipo{
         var header = new HttpHeaders().set("Content-Type","application/json");
         var request = "/api/apuestas";
         var url = Global.urlapuestas + request;
-        return this._http.put(url,json,{headers: header});
+        return this._http.post(url,json,{headers: header});
+    }
 
+    eliminarApuesta(id:string){
+        var request = "/api/apuestas/" + id;
+        var url = Global.urlapuestas + request;
+        return this._http.delete(url);
+    }
+
+    buscarJugadores(nombre:string):Observable<any>{
+        var request = "/api/jugadores/buscarjugadores/" + nombre;
+        var url = Global.urlapuestas + request;
+        return this._http.get(url);
     }
 }
