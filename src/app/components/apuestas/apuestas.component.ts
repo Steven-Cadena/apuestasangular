@@ -9,27 +9,31 @@ import { ServiceEquipo } from 'src/app/services/equipo.service';
   styleUrls: ['./apuestas.component.css']
 })
 export class ApuestasComponent implements OnInit {
-  public apuestas!: Array<Apuesta>;
-  public apuestadelete!: Apuesta;
-  constructor(
-    private _service:ServiceEquipo,
-  ) { }
+
+  public apuestas! : Array<Apuesta>;
+  public apuesta! : Apuesta;
+
+  constructor(private _service : ServiceEquipo) { }
 
   ngOnInit(): void {
-    this.cargarApuesta();
+    this.cargarApuestas();
   }
 
-  cargarApuesta(){
-    this._service.getApuestas().subscribe(response=>{
-      this.apuestas = response;
+  cargarApuestas(){
+    this._service.getApuestas().subscribe(res => {
+      this.apuestas = res;
     });
   }
 
   eliminarApuesta(){
-    // this._service.eliminarApuesta(idapuesta).subscribe(response=>{
-    // });
+    var id = this.apuesta.idApuesta;
+    this._service.eliminarApuesta(id).subscribe(response =>{
+      this.cargarApuestas();
+    });
   }
-  recogerApuesta(){
-    this._service
+
+  recogerApuesta(apuestaEliminar: Apuesta){
+    this.apuesta = apuestaEliminar;
   }
+
 }

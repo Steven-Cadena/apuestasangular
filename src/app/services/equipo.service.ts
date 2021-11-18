@@ -44,7 +44,7 @@ export class ServiceEquipo{
         return this._http.post(url,json,{headers: header});
     }
 
-    eliminarApuesta(id:string){
+    eliminarApuesta(id:number){
         var request = "/api/apuestas/" + id;
         var url = Global.urlapuestas + request;
         return this._http.delete(url);
