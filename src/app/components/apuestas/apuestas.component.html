@@ -1,0 +1,20 @@
+<h1>Local: Real Madrid, Visitante: Atlético de Madrid </h1>
+<a [routerLink]="['/realizarapuesta']" class="btn btn-danger"> 
+    Realizar Apuesta
+</a>
+<div *ngIf="apuestas">
+    <table>
+        <thead>
+            <th>USUARIO</th>
+            <th>RESULTADO</th>
+            <th>FECHA</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let apuesta of apuestas;">
+                <td>{{apuesta.usuario}}</td>
+                <td>{{apuesta.resultado}}</td>
+                <td>{{apuesta.fecha}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

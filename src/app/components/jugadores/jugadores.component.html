@@ -1,0 +1,25 @@
+<a [routerLink]="['/']" class="btn btn-info"> 
+    Volver
+</a>
+<div *ngIf="jugadores">
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Detalle</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let jugador of jugadores;">
+                <td>{{jugador.nombre}}</td>
+                <td>
+                    <img src="{{jugador.imagen}}" style="width: 150px;"/>
+                </td>
+                <td>
+                    <a [routerLink]="['/detallejugador', jugador.idJugador]" class="btn btn-danger"> 
+                        Detalle
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

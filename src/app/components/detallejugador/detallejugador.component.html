@@ -1,0 +1,13 @@
+<p>detallejugador works!</p>
+<div *ngIf="jugador">
+    <div style="width: 500px; margin: 0 auto;">
+        <h1>{{jugador.nombre}}</h1>
+        <img src="{{jugador.imagen}}" style="width: 150px;"/>
+        <h2>{{jugador.posicion}}</h2>
+        <p>Fecha de Nacimiento:{{jugador.fechaNacimiento}}</p>
+        <p>País: {{jugador.pais}}</p>
+        <a [routerLink]="['/jugadores',jugador.idEquipo]" class="btn btn-success"> 
+            Volver
+        </a>
+    </div>
+</div>
